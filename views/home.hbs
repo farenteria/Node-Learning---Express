@@ -5,11 +5,11 @@
         <title>Some Website</title>
     </head>
     <body>
-        <h1>{{ pageTitle }}</h1>
-        <p>{{ welcomeMessage }}</p>
+        {{> header }}
+        {{!-- 1st argument is helper function, 2nd is parameter to that helper function --}}
+        <p>{{ screamIt welcomeMessage }}</p>
 
-        <footer>
-            <p>Copyright {{ currentYear }}</p>
-        </footer>
+        {{!-- use footer.hbs partial  --}}
+        {{> footer }}
     </body>
 </html>
