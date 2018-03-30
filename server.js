@@ -1,23 +1,24 @@
 const express = require("express");
-
+const hbs = require("hbs");
 var app = express();
 
+app.set("view engine", "hbs");
 app.use(express.static(__dirname + "/public"));
 
 // get() allows us to set handler for get requests
 app.get("/", (req, res) => {
-    // res.send("Hello express");
-    res.send({
-        name: "Fernando",
-        likes: [
-            "Guitar",
-            "Music"
-        ]
+    res.render("home.hbs",{
+        pageTitle: "Home Page",
+        welcomeMessage: "Welcome to the coolest page",
+        currentYear: new Date().getFullYear()
     });
 });
 
 app.get("/about", (req, res) => {
-    res.send("About Page");
+    res.render("about.hbs", {
+        pageTitle: "About Page",
+        currentYear: new Date().getFullYear()
+    });
 });
 
 app.get("/bad", (req, res) => {
